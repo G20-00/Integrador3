@@ -1,10 +1,10 @@
 package model;
-public class Lineup{
+public class LineUp{
 	public final static int LINEUP_ROWS = 10;	
 	public final static int LINEUP_COLUMNS = 7;
 	private String date;
 	private int[][] matrix;
-	public lineup(String chain,String date){
+	public LineUp(String chain,String date){
 		this.date = date;
 		matrix = stringToMatrix(chain);
 	}
