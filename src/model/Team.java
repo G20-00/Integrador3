@@ -68,7 +68,7 @@ public class Team{
 				suma += num[i]; 
 			}
 			if(	suma > 10){
-			//out = "El numero de jugadores en la formacion no es valida"; 
+			 
 			}
 			else{
 				line.add(lines); 

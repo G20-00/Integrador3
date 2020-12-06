@@ -10,10 +10,12 @@ public class MainCoach extends Coach implements Profitable{
 	}
 	public double calculateMarketPrice(){
 		double out = 0;
+		out = getSalary()*10 + getExperienceYears()*100 + wonChampionShips*50;
 		return out;
 	}
 	public double calculateStars(){
 		double out = 0;
+		out = 5+wonChampionShips/10;
 		return out;
 	}
 }

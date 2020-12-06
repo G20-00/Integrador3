@@ -6,5 +6,7 @@ public abstract class Coach extends Employee{
 		super(name,identificator,salary);
 		this.experienceYears = experienceYears;
 	}
-	
+	public int getExperienceYears(){
+		return experienceYears;
+	}
 }
