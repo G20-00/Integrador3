@@ -96,6 +96,13 @@ public Club(String name,String nit,String creationDate){
 				}
 				out += "\n";
 		}
+		out += "\n Oficina\n";
+		for(int i= 0; i< office.length  ; i++){
+			for(int j= 0;j< office[0].length  ;j++){
+				out += office[i][j]+ " "+("\t"); 
+				}
+				out += "\n";
+		}
 			
 		return out;	
 		
@@ -199,6 +206,29 @@ public Club(String name,String nit,String creationDate){
 			}
 		return out;	
 	}
+	public String printEmplooye(){// para imprimir los de jugadores y coach
+		String out = "No hay empleados";
+			int num = 0;
+			for(int i= 0; i< employee.size();i++ ){
+			 if(employee.get(i) != null){
+				if(employee.get(i) instanceof Player){
+					if(num==0){
+					num++;	
+					out = "****Empleados****\n";
+				}
+				out+= i+" - "+employee.get(i).getName()+"\n";
+				}
+				if(employee.get(i) instanceof MainCoach){
+					if(num==0){
+					num++;	
+					out = "****Empleados****\n";
+				}
+				out+= i+" - "+employee.get(i).getName()+"\n";
+				}
+			 }
+			}
+		return out;	
+	}
 	public String fireEmployee(int num){
 		String out = "";
 		boolean found  = false;
@@ -215,7 +245,32 @@ public Club(String name,String nit,String creationDate){
 		}
 		return out;
 	}
-	public void creatLineUp(int numTeam,String lineUp){
-		teams[numTeam].creatLineUp(lineUp);
+	public void creatLineUp(String date, int numTeam,String lineUp,String tactis){
+		System.out.println("llega");
+		teams[numTeam].creatLineUp( date,lineUp,tactis);
+	}
+	public String printFormations(int numTeam){
+		String out="No existe el equipo";
+		if(teams[numTeam] != null){
+		out = (teams[numTeam].printFormations());
+		}
+		return out;
+	}
+	public String printTraining(int numTeam,int eleccion){
+		String out = "";
+			if(teams[numTeam] != null){
+			out = (teams[numTeam].printTraining(eleccion));
+		}
+		return out;
+	}
+	public double calculateValue(int num){
+		double out = 0;
+		out = employee.get(num).calculateMarketPrice();
+		return out;
+	}
+	public double calculateStars(int num){
+		double out = 0;
+		out = employee.get(num).calculateStars();
+		return out;
 	}
 }

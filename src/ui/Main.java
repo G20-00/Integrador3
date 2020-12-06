@@ -11,6 +11,7 @@ public class Main{
 	private int countainTechnicalCoach;
 	private int countainClub ;
 	private int countainEmployee;
+	private Team team;
 	public Main(){
 		club = new Club("","","");
 		numScan = new Scanner(System.in);
@@ -37,7 +38,7 @@ public class Main{
 		boolean run = true;
 		while(run){
 		System.out.println("¿Que desea hacer?"+"\n 1. Crear un empleado"+"\n 2. Crear equipo"+"\n 3. Asignar empleados a equipo"+"\n 4. Despedir empleado"+
-		"\n 5. Imprimir empleados"+"\n 6. Crear una formacion");
+		"\n 5. Imprimir empleados"+"\n 6. Crear una formacion"+"\n 7. Imprimir Formaciones"+"\n 8. Calcular valor y nivel"+"\n 9. Imprimir camerinos y vestuarios");
 		int eleccion = numScan.nextInt();
 			switch(eleccion){
 				case 1:
@@ -58,7 +59,15 @@ public class Main{
 				case 6:
 					creatLineUp();
 				break;
-				
+				case 7:
+					printFormations();
+				break;
+				case 8:
+					calculateValue();
+				break;
+				case 9:
+					System.out.println(club.printdressingRoom());
+				break;
 			}
 		}
 	}
@@ -109,7 +118,7 @@ public class Main{
 						}
 						countainPlayer++;
 						club.createEmployee(name,identificator,salary,numberShirt,numberGoals,averageRating,position);
-	// imprimir camerinos		System.out.println(club.printdressingRoom());
+			
 					}
 					run = false;
 				break;
@@ -234,6 +243,7 @@ public class Main{
 								club.addPlayer(numTeam,numEmployee);
 								System.out.println(club.addPlayer(numTeam,numEmployee));
 								
+								
 							}
 							else{
 								System.out.println("Debe crear primero el empleado\n");
@@ -290,6 +300,28 @@ public class Main{
 	}
 	public void creatLineUp(){
 		if(countainClub > 0){
+		System.out.println("Fecha de la formacion");
+		String date = scan.nextLine();
+		String tatics = "";
+			boolean run = true;
+			while(run){
+				System.out.println("Elija la tactica"+"\n 1. Posesion"+"\n 2. Contraataque"+"\n 3. Presion alta"+"\n 4.por defecto");
+					int tatic = numScan.nextInt();	
+				switch(tatic){
+					case 1:  tatics= "POSSESSION";
+						run = false;
+					break; 
+					case 2:  tatics= "COUNTERATTACK";
+						run = false;
+					break; 
+					case 3:  tatics= "HIGH_PRESSURE";
+						run = false;
+					break; 
+					case 4:  tatics= "DEFAULT";
+						run = false;
+					break; 
+				}
+			}
 		int num = countainClub;
 		System.out.println("Digite el numero del equipo");
 		System.out.println(club.printTeam());
@@ -297,7 +329,7 @@ public class Main{
 		if(numTeam >= 0 && numTeam <= num-1){
 		System.out.println("Digite la formacion Seperada por (-): ejemplo 2-3-7 ");
 		String lineUp = scan.nextLine();
-		club.creatLineUp(numTeam,lineUp);
+		club.creatLineUp(date,numTeam,lineUp,tatics);
 		}else{
 			System.out.println("El equipo seleccionado no exite\n");
 		}
@@ -307,4 +339,27 @@ public class Main{
 		}
 		
 	}
+	public void printFormations(){
+		System.out.println("¿De cual equipo quiere ver la formacion?");
+		System.out.println(club.printTeam());
+		int numTeam= numScan.nextInt();
+		System.out.println("Escoja la fecha de la formacion");
+		System.out.println(club.printFormations(numTeam));
+		int eleccion= numScan.nextInt();
+		System.out.println(club.printTraining(numTeam,eleccion));
+		
+	}
+	public void calculateValue(){
+		if(countainCoachMain > 0 || countainPlayer >0 ){
+		System.out.println(club.printEmplooye());
+		System.out.println("Seleccione el empleado");
+		int num = numScan.nextInt();
+		System.out.println("\n****Valor del mercado****\n"+club.calculateValue(num));
+		System.out.println("\n****Nivel****\n"+club.calculateStars(num));
+		}
+		else{
+			System.out.println("Debe crear jugadores y entrenadores");
+		}
+	}
+	
 }

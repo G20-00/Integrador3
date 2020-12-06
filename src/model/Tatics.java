@@ -1,0 +1,4 @@
+package model;
+public enum Tatics{
+	POSSESSION,COUNTERATTACK,HIGH_PRESSURE,DEFAULT
+}

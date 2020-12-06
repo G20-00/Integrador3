@@ -20,10 +20,6 @@ public class Team{
 		countainMain = 0;
 		countainPlayer = 0;
 	}
-	public void addLineup(String date,String chain){
-		LineUp lines = new LineUp(date,chain);
-		line.add(lines);
-	}
 	public String getName(){
 		return name;
 	}
@@ -58,21 +54,39 @@ public class Team{
 		return out;	
 		
 	}
-	public void creatLineUp(String lineUp){
+	public void  creatLineUp(String date ,String lineUp,String tactis){
+		LineUp lines = new LineUp(lineUp,date,tactis); 
 		String[] formacion = lineUp.split("-");
 		int[]num = new int[formacion.length];
 		int suma = 0;
+		System.out.println("1");
 		for(int i = 0 ; i< num.length; i++){
 			num[i]= Integer.parseInt(formacion[i]);
 			}
-			System.out.println(formacion[2]+"");
 			int a = formacion.length;
 			for(int i = 0; i<num.length; i++){
 				suma += num[i]; 
 			}
 			if(	suma > 10){
-			System.out.println(suma+"paila"); 
+			//out = "El numero de jugadores en la formacion no es valida"; 
 			}
+			else{
+				line.add(lines); 
+			}
+			
+	}
+	public String printFormations(){
+		String out ="";
+		for(int i = 0; i<line.size();i++){
+			System.out.println("Funciona 12");
+			out = i+"- "+line.get(i).getDate()+"\n";
+		}
+		return out;
+	}
+	public String printTraining(int eleccion){
+		String out = "";
+			out = (line.get(eleccion).showMatrix());
+		return out;
 	}
 	
 }
