@@ -5,15 +5,30 @@ public class LineUp{
 	private String date;
 	private int[][] matrix;
 	private Tatics tactis;
+	/**
+	 * Constructor
+	 *initialize variables
+	 *@param chain is a String 
+	 *@param date is a String 
+	 *@param tatic is a double
+	 */
 	public LineUp(String chain,String date,String tatic){
 		this.date = date;
 		matrix = stringToMatrix(chain);
 		this.tactis= Tatics.valueOf(tatic);
 		
 	}
+	//getters
 	public String getDate(){
 		return date;
 	}
+	/**
+	*stringToMatrix: modify the matrix and assign the formation
+	*<b> pre: </b>
+	*<b> pos: </b>
+	*@param chain is a String
+	*@return out  is a int[][]
+	*/
 	public int[][] stringToMatrix(String chain){
 		double divide = 0;
 		boolean out = false ;
@@ -85,6 +100,12 @@ public class LineUp{
 			
 		return ouput;
 	}
+	/**
+	*showMatrix: print the formation matrix
+	*<b> pre: </b>
+	*<b> pos: </b> 
+	*@return out  is a String
+	*/
 	public String showMatrix(){
 		String out = "\n";
 		for(int i= 0;i < matrix.length;i++){

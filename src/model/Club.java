@@ -11,9 +11,14 @@ public class Club{
 	private int[][] dressingRoom1;
 	private int[][] dressingRoom2;
 	
-	
-	
-public Club(String name,String nit,String creationDate){
+
+/**
+	 * Constructor
+	  *@param name is a String
+	 * @param nit is a String
+	 * @param creationDate is a String
+	 */	
+	public Club(String name,String nit,String creationDate){
 	this.name = name;
 	this.nit = nit;
 	this.creationDate = creationDate;
@@ -22,7 +27,19 @@ public Club(String name,String nit,String creationDate){
 	dressingRoom2 = new int[7][7];
 	teams = new Team[MAX_CLUB];
 	employee= new ArrayList<Employee>();
-}	
+	}	
+	/**
+	*createEmployee: create a employee player and  add Arrays
+	*<b> pre: </b>
+	*<b> pos: </b> add user
+	*@param  name is a String
+	*@param identificator is a String
+	*@param salary is a double
+	*@param	numberShirt is a String 
+	*@param numberGoals  is a int 
+	*@param	averageRating is a double
+	*@param position is a String
+	*/
 	public void createEmployee(String name, String identificator,double salary,String numberShirt,int numberGoals,double averageRating
 	,String position){
 		Employee player = new Player(name,identificator,salary,numberShirt,numberGoals,averageRating,position);
@@ -51,6 +68,17 @@ public Club(String name,String nit,String creationDate){
 		}
 		}
 	}
+	/**
+	*createEmployee: create a employee main coach and  add Arrays
+	*<b> pre: </b>
+	*<b> pos: </b> 
+	*@param  name is a String
+	*@param identificator is a String
+	*@param salary is a double
+	*@param	experienceYears is a int
+	*@param teamsThatlsEncharged  is a int 
+	*@param	wonChampionShips is a int
+	*/
 	public void createEmployee(String name, String identificator,double salary,int experienceYears,int teamsThatlsEncharged,int wonChampionShips){
 		Employee coach = new MainCoach(name,identificator,salary,experienceYears,teamsThatlsEncharged,wonChampionShips);
 			employee.add(coach);
@@ -66,6 +94,17 @@ public Club(String name,String nit,String creationDate){
 			i++;
 		}
 	}
+	/**
+	*createEmployee: create a employee assistans coach and  add Arrays
+	*<b> pre: </b>
+	*<b> pos: </b> 
+	*@param  name is a String
+	*@param identificator is a String
+	*@param salary is a double
+	*@param	experienceYears is a int
+	*@param professionalPlayer  is a string 
+	*@param	skill is a String
+	*/
 	public void createEmployee(String name, String identificator,double salary,int experienceYears,String professionalPlayer,String skill){
 		Employee assitentCoach = new TechnicalAssistants(name,identificator,salary,experienceYears,professionalPlayer,skill);
 			employee.add(assitentCoach);
@@ -81,6 +120,12 @@ public Club(String name,String nit,String creationDate){
 			i++;
 		}
 	}
+	/**
+	*printdressingRoom: print positions in dressing rooms and offices
+	*<b> pre: </b>
+	*<b> pos: </b> 
+	*@return out String 
+	*/
 	public String printdressingRoom (){
 			String out = " Camerino 1\n";
 		for(int i= 0; i< dressingRoom1.length  ; i++){
@@ -107,6 +152,12 @@ public Club(String name,String nit,String creationDate){
 		return out;	
 		
 	}
+	/**
+	*creadTeam: create the team and add it to an array
+	*<b> pre: </b>
+	*<b> pos: </b> 
+	*@param  name is a String
+	*/
 	public void creadTeam(String name){
 		boolean found = true;
 		Team team =new Team(name);
@@ -117,6 +168,12 @@ public Club(String name,String nit,String creationDate){
 			}
 		}
 	}
+	/**
+	*printTeam: print creadps teams
+	*<b> pre: </b>
+	*<b> pos: </b> 
+	*@return out is a String
+	*/
 	public String printTeam(){
 		String out = "";
 		for(int i= 0; i< teams.length;i++){
@@ -126,6 +183,12 @@ public Club(String name,String nit,String creationDate){
 		}
 		return out ;
 	}
+	/**
+	*printNamePlayer: print names creadps player
+	*<b> pre: </b>
+	*<b> pos: </b> 
+	*@return out is a String
+	*/
 	public String printNamePlayer(){
 	String out = "";
 		for(int i= 0; i< employee.size();i++){
@@ -135,7 +198,12 @@ public Club(String name,String nit,String creationDate){
 		}
 		return out ;
 	}	
-	
+	/**
+	*printNameMainCoach: print names creadps main coach
+	*<b> pre: </b>
+	*<b> pos: </b> 
+	*@return out is a String
+	*/
 	public String printNameMainCoach(){
 	String out = "";
 		for(int i= 0; i< employee.size();i++){
@@ -145,7 +213,12 @@ public Club(String name,String nit,String creationDate){
 		}
 		return out ;
 	}	
-	
+	/**
+	*printNameTechnica: print names creadps technical asistents
+	*<b> pre: </b>
+	*<b> pos: </b> 
+	*@return out is a String
+	*/
 	public String printNameTechnica(){
 	String out = "";
 		for(int i= 0; i< employee.size();i++){
@@ -155,6 +228,14 @@ public Club(String name,String nit,String creationDate){
 		}
 		return out ;
 	}	
+	/**
+	*addPlayer: add an player to the team and return a message
+	*<b> pre: </b>
+	*<b> pos: </b> 
+	*@param numEmplooye is a int
+	*@param team is a int
+	*@return out is a String
+	*/
 	public String addPlayer(int team,int numEmplooye){
 		String out = "La seleccion no pertenece a un jugador";
 			if(employee.get(numEmplooye) instanceof Player){
@@ -168,6 +249,14 @@ public Club(String name,String nit,String creationDate){
 			}
 		return out ;	
 	}
+	/**
+	*addMainCoach: add an main coach to the team and return a message
+	*<b> pre: </b>
+	*<b> pos: </b> 
+	*@param numEmplooye is a int
+	*@param team is a int
+	*@return out is a String
+	*/
 	public String addMainCoach(int team,int numEmplooye){
 		String out = "La seleccion no pertenece a un entrenador";
 			if(employee.get(numEmplooye) instanceof Coach){
@@ -181,6 +270,14 @@ public Club(String name,String nit,String creationDate){
 			}
 		return out ;	
 	}
+	/**
+	*addTechnicalAssistants: add an technical assistans to the team and return a message
+	*<b> pre: </b>
+	*<b> pos: </b> 
+	*@param numEmplooye is a int
+	*@param team is a int
+	*@return out is a String
+	*/
 	public String addTechnicalAssistants(int team,int numEmplooye){
 		String out = "La seleccion no pertenece a un asistente tecnico";
 			if(employee.get(numEmplooye) instanceof TechnicalAssistants){
@@ -194,6 +291,12 @@ public Club(String name,String nit,String creationDate){
 			}
 		return out ;	
 	}
+	/**
+	*printEmplooyes: print names creadps employee
+	*<b> pre: </b>
+	*<b> pos: </b> 
+	*@return out is a String
+	*/
 	public String printEmplooyes(){
 		String out = "No hay empleados";
 			for(int i= 0; i< employee.size();i++ ){
@@ -206,6 +309,12 @@ public Club(String name,String nit,String creationDate){
 			}
 		return out;	
 	}
+	/**
+	*printEmplooye: print the names of the players and the head coaches
+	*<b> pre: </b>
+	*<b> pos: </b> 
+	*@return out is a String
+	*/
 	public String printEmplooye(){// para imprimir los de jugadores y coach
 		String out = "No hay empleados";
 			int num = 0;
@@ -229,6 +338,13 @@ public Club(String name,String nit,String creationDate){
 			}
 		return out;	
 	}
+	/**
+	*fireEmployee: print the dismissal confirmation messagess
+	*<b> pre: </b>
+	*<b> pos: </b> 
+	*@param num is a int
+	*@return out is a String
+	*/
 	public String fireEmployee(int num){
 		String out = "";
 		boolean found  = false;
@@ -245,17 +361,42 @@ public Club(String name,String nit,String creationDate){
 		}
 		return out;
 	}
+	/**
+	*creatLineUp: create the team formation
+	*<b> pre: </b>
+	*<b> pos: </b> 
+	*@param  date is a String
+	*@param numTeam is a int
+	*@param lineUp is a String
+	*@param tactis  is a String
+	*/
 	public void creatLineUp(String date, int numTeam,String lineUp,String tactis){
 		System.out.println("llega");
 		teams[numTeam].creatLineUp( date,lineUp,tactis);
 	}
+	/**
+	*printFormations: print the dates of the team formations
+	*<b> pre: </b>
+	*<b> pos: </b> 
+	*@param numTeam is a int
+	*@return out  is a String
+	*/
 	public String printFormations(int numTeam){
 		String out="No existe el equipo";
-		if(teams[numTeam] != null){
+		if(teams[numTeam].validateLine() == true){
+			System.out.println("algo esta mal");
 		out = (teams[numTeam].printFormations());
 		}
 		return out;
 	}
+	/**
+	*printTraining: print the dates of the team formations
+	*<b> pre: </b>
+	*<b> pos: </b> 
+	*@param numTeam is a int
+	*@param eleccion is a int
+	*@return out  is a String
+	*/
 	public String printTraining(int numTeam,int eleccion){
 		String out = "";
 			if(teams[numTeam] != null){
@@ -263,11 +404,25 @@ public Club(String name,String nit,String creationDate){
 		}
 		return out;
 	}
+	/**
+	*calculateValue: print the calculation of the employee value
+	*<b> pre: </b>
+	*<b> pos: </b> 
+	*@param num is a int
+	*@return out  is a double
+	*/
 	public double calculateValue(int num){
 		double out = 0;
 		out = employee.get(num).calculateMarketPrice();
 		return out;
 	}
+	/**
+	*calculateStars: print the calculation of the employee stars
+	*<b> pre: </b>
+	*<b> pos: </b> 
+	*@param num is a int
+	*@return out  is a double
+	*/
 	public double calculateStars(int num){
 		double out = 0;
 		out = employee.get(num).calculateStars();

@@ -4,7 +4,17 @@ public class Player extends Employee implements Profitable{
 	private double averageRating;
 	private int numberGoals ;
 	private Position positions;
-	
+	/**
+	 * Constructor
+	 *initialize variables
+	 *@param name is a String 
+	 *@param identificator is a String 
+	 *@param salary is a double
+	 *@param numberShirt is a String
+	 *@param numberGoals is a int
+	 *@param averageRating is a double
+	 *@param position is a String
+	 */
 	public Player(String name, String identificator,double salary,String numberShirt,int numberGoals,double averageRating,String position){
 		super(name,identificator,salary);
 		this.numberShirt = numberShirt;
@@ -12,9 +22,16 @@ public class Player extends Employee implements Profitable{
 		this.numberGoals = numberGoals;
 		this.positions = Position.valueOf(position);
 	}
+	//getters
 	public Position getPositions(){
 		return positions;
 	}
+	/**
+	*calculateMarketPrice: print the calculation of the employee value
+	*<b> pre: </b>
+	*<b> pos: </b> 
+	*@return out  is a double
+	*/
 	public double calculateMarketPrice(){
 		double out = 0; 
 		if(getPositions() == Position.GOALKEEPER ){
@@ -31,7 +48,12 @@ public class Player extends Employee implements Profitable{
 		}
 		return out; 
 	}
-	
+	/**
+	*calculateStars: print the calculation of the employee stars
+	*<b> pre: </b>
+	*<b> pos: </b> 
+	*@return out  is a double
+	*/
 	public double calculateStars(){
 		double out = 0;
 		if(getPositions() == Position.GOALKEEPER ){

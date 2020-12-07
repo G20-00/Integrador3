@@ -12,6 +12,10 @@ public class Main{
 	private int countainClub ;
 	private int countainEmployee;
 	private Team team;
+	/**
+	 * Constructor
+	 *initialize variables
+	 */
 	public Main(){
 		club = new Club("","","");
 		numScan = new Scanner(System.in);
@@ -22,6 +26,12 @@ public class Main{
 		countainClub = 0;
 		countainEmployee = 0;
 	}
+	/**
+	*main: inicialize initialize variables
+	*<b> pre: </b>
+	*<b> pos: </b>
+	*@param args []String
+	*/	
 	public static void main(String[] args){
 		sc = new Scanner(System.in);
 		System.out.println("Nombre del club");
@@ -34,6 +44,11 @@ public class Main{
 		 Main m = new Main();
 		 m.menu();
 	}
+	/**
+	*menu: show the application options
+	*<b> pre: </b>
+	*<b> pos: </b>
+	*/	
 	public void menu(){
 		boolean run = true;
 		while(run){
@@ -71,6 +86,11 @@ public class Main{
 			}
 		}
 	}
+		/**
+	*createEmployee: create a employee assistans coach and  add Arrays
+	*<b> pre: </b>
+	*<b> pos: </b> 
+	*/
 	public void creadEmployee(){
 		countainEmployee++;
 		boolean run = true;
@@ -213,6 +233,11 @@ public class Main{
 			}
 		}
 	}	
+	/**
+	*creadTeam: create the team and add it to an array
+	*<b> pre: </b>
+	*<b> pos: </b> 
+	*/
 	public void creadTeam(){
 		if(countainClub < 2){
 		System.out.println("Nombre del equipo");
@@ -224,6 +249,11 @@ public class Main{
 			System.out.println("Creo el maximo de equipos\n");
 		}
 	}
+	/**
+	*assignEmployee: an employee assists the team
+	*<b> pre: </b>
+	*<b> pos: </b> 
+	*/
 	public void assignEmployee(){
 		if(countainClub != 0 && countainPlayer !=0){
 			System.out.println("¿a cual equipo le asignaras el empleado?");
@@ -284,6 +314,11 @@ public class Main{
 			}
 		}
 	}
+	/**
+	*fireEmployee: print the dismissal confirmation messagess
+	*<b> pre: </b>
+	*<b> pos: </b> 
+	*/
 	public void fireEmployee(){
 		if(countainPlayer > 0){
 		System.out.println("\nEmpleado que va a despedir\n"+club.printEmplooyes());
@@ -295,9 +330,19 @@ public class Main{
 		}
 		
 	}
+	/**
+	*printEmplooyes: print all employees created
+	*<b> pre: </b>
+	*<b> pos: </b> 
+	*/
 	public void printEmplooyes(){
 		System.out.println("\nEmpleado contratados\n"+club.printEmplooyes());
 	}
+	/**
+	*creatLineUp: create a team formation
+	*<b> pre: </b>
+	*<b> pos: </b> 
+	*/
 	public void creatLineUp(){
 		if(countainClub > 0){
 		System.out.println("Fecha de la formacion");
@@ -339,16 +384,41 @@ public class Main{
 		}
 		
 	}
+	/**
+	*printFormations: print the training you want
+	*<b> pre: </b>
+	*<b> pos: </b> 
+	*/
 	public void printFormations(){
+	if(countainClub>0){
 		System.out.println("¿De cual equipo quiere ver la formacion?");
 		System.out.println(club.printTeam());
 		int numTeam= numScan.nextInt();
+		if(numTeam >= 0 && numTeam <= 0){
+		String out = "No existe el equipo";
+		if(club.printFormations(numTeam)!= out){
 		System.out.println("Escoja la fecha de la formacion");
 		System.out.println(club.printFormations(numTeam));
 		int eleccion= numScan.nextInt();
 		System.out.println(club.printTraining(numTeam,eleccion));
+		}
+		else{
+			System.out.println("\nNo ha creado formaciones para este equipo\n");
+		}
+		}
+		else{
+			System.out.println("Debe seleccionar una opcion valida");
+		}
+	}else{
+		System.out.println("Debe crear un equipo");
+	}
 		
 	}
+	/**
+	*calculateValue: calculate the value of an employee
+	*<b> pre: </b>
+	*<b> pos: </b> 
+	*/
 	public void calculateValue(){
 		if(countainCoachMain > 0 || countainPlayer >0 ){
 		System.out.println(club.printEmplooye());
